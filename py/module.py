@@ -116,7 +116,7 @@ class Module:
         for port in self.ports:
             if port['iodir'] == 'input':
                 wi = int(port['datah']) - int(port['datal']) + 1
-                self.init_reg += port['name'] + " = " + str(wi) + "d'0;\n"
+                self.init_reg += port['name'] + " = " + str(wi) + "'d0;\n"
         self.tb_str += align.align(self.init_reg,tabs,ints+1)
         self.tb_str += '\n' 
         self.tb_str += '\tend' 

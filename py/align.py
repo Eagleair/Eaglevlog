@@ -13,7 +13,8 @@ def align(str_many,ts_conut,ints):
     col_same = np.asarray(col_same,dtype=np.int8)
     if a.shape[1]-1 in col_same:
         a = np.insert(a,a.shape[1],'',axis=1)
-    a[...,col_same+1] = a[...,col_same] + ' ' + a[...,col_same+1]               #合并到下一列 
+    for col in col_same[0]:
+        a[...,col+1] = a[...,col] + ' ' + a[...,col+1]               #合并到下一列 
     a = np.delete(a,col_same,axis=1)
     str_len=np.char.str_len(np.asarray(a,dtype=np.str))//ts_conut               #计算字符单词占用tas的个数
     a=np.asarray(a,dtype=[('strs','O'),('tab','O')])
