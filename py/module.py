@@ -65,7 +65,7 @@ class Module:
         return string
 
     def get_inst(self, f_str, ints = 1, tabs = 4):
-        Module.init_module(self, f_str)
+        self.init_module(self, f_str)
         self.port_str=''
         for port in self.ports[:-1]:
             self.port_str += ' .' + port['name'] + ' ( ' + port['name'] + ' ),' 
@@ -80,9 +80,9 @@ class Module:
         return self.inst_str
 
     def get_tb(self, f_str, ints = 1, tabs = 4):
-        Module.init_module(self, f_str)
+        self.init_module(self, f_str)
         self.init_reg = ''
-        self.tb_str = Module.add_head(self.name)
+        self.tb_str = self.add_head(self.name)
         self.tb_str += '`timescale 1ns/1ps' 
         self.tb_str += '\n\n' 
         self.tb_str += 'module ' + self.name + '_tb;' 
